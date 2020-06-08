@@ -1,5 +1,4 @@
 const constants = {
-
     GET_CATEGORIES_URL: 'https://api.mercadolibre.com/categories/',
     GET_ITEMS_URL: 'https://api.mercadolibre.com/sites/MLA/search?q=',
     GET_ITEM_URL: 'https://api.mercadolibre.com/items/',
