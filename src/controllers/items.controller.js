@@ -117,6 +117,7 @@ itemsCtrl.getItem = async (req, res) => {
             const {
                 data: {
                     id,
+                    category_id,
                     title,
                     price: amount,
                     currency_id: currency,
@@ -128,6 +129,12 @@ itemsCtrl.getItem = async (req, res) => {
                     pictures,
                 },
             } = await axios.get(`${GET_ITEM_URL}${idParam}`);
+
+            const {
+                data: {
+                    path_from_root,
+                }
+            } = await axios.get(`${GET_CATEGORIES_URL}${category_id}`);
 
             const {
                 data: {
@@ -148,6 +155,7 @@ itemsCtrl.getItem = async (req, res) => {
                 condition,
                 free_shipping,
                 description,
+                categories: path_from_root.map(item => item.name),
             });
         } catch (error) {
             if (error.response && error.response.data) {

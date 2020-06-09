@@ -18,6 +18,7 @@ describe('items controller', () => {
   const getItemData = {
     data: {
       id: 'MLA123456',
+      category_id: 1,
       title: 'Mochila Genial',
       price: 1000,
       currency_id: 'ARS',
@@ -74,6 +75,7 @@ describe('items controller', () => {
 
   it('checks getItem returns data properly', async () => {
     axios.get.mockResolvedValueOnce(getItemData);
+    axios.get.mockResolvedValueOnce(getItemsCategories);
     axios.get.mockResolvedValueOnce(getItemDescriptionData);
 
     const mReq = {params: {id: '123456'}};
@@ -95,6 +97,7 @@ describe('items controller', () => {
         free_shipping: false,
         picture: 'http://www.image.com/hey.jpg',
         description: 'Esta es una mochila increible!',
+        categories: ['Ropa y Accesorios','Mochilas'],
     });
 
   });
